@@ -82,7 +82,7 @@ public class taikhoanController extends HttpServlet {
             session.setAttribute("username", taikhoan.getUsername());
             session.setAttribute("quyen", taikhoan.getQuyen());
             session.setAttribute("idtaikhoan", taikhoan.getIdtaikhoan());
-            RequestDispatcher rd = request.getRequestDispatcher("TrangChu.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
             rd.forward(request, response);
         }
     }
@@ -96,7 +96,7 @@ public class taikhoanController extends HttpServlet {
 
         boolean check = taikhoanBo.dangkiBO(taikhoan);
         if(check){
-            RequestDispatcher rd = request.getRequestDispatcher("TrangChu.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
             rd.forward(request, response);
         }
         else {
@@ -141,7 +141,7 @@ public class taikhoanController extends HttpServlet {
 
         boolean check = taikhoanBo.capnhatthongtinBO(taikhoan);
         if(check){
-            RequestDispatcher rd = request.getRequestDispatcher("TrangChu.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
             rd.forward(request, response);
         }
         else {
