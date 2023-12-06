@@ -9,7 +9,6 @@
 --%>
 <!DOCTYPE html>
 <html lang="en">
-<%@include file="Component/MainCSS.jsp"%>
 
 <head>
     <meta charset="UTF-8"/>

@@ -10,59 +10,63 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link " aria-current="page"
-					href="baivietController?action=getListbaiviet&iddanhmuc=1">GIỚI
-						THIỆU</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=2">THÔNG
-						BÁO</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=3">TIN
-						TỨC</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=4">SỰ
-						KIỆN</a></li>
-						<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=5">TRƯỜNG</a></li>
-<!-- 
+		
+			<ul class="navbar-nav">
+			<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle"
+					href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						GIỚI THIỆU</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="baivietController?action=getListbaiviet2&iddanhmuc=1">Giới thiệu</a></li>
+						<li><a class="dropdown-item" href="baivietController?action=getListbaiviet2&iddanhmuc=5">Trường</a></li>
+						
+					</ul></li>
+				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle"
 					href="#"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown link </a>
+						THÔNG BÁO</a>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+						<li><a class="dropdown-item" href="baivietController?action=getListbaiviet2&iddanhmuc=2">Thông báo</a></li>
+						<li><a class="dropdown-item" href="baivietController?action=getListbaiviet2&iddanhmuc=9">Học phí</a></li>
+						
 					</ul></li>
- -->
 				<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=6">KHOA</a></li>
+					href="baivietController?action=getListbaiviet2&iddanhmuc=3">TIN TỨC</a>
+				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=7">TRỢ
-						GIÚP</a></li>
+					href="baivietController?action=getListbaiviet2&iddanhmuc=4">SỰ KIỆN</a>
+				</li>
+			
 				<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=8">NGHIÊN
-						CỨU</a></li>
-						<li class="nav-item"><a class="nav-link"
-					href="baivietController?action=getListbaiviet&iddanhmuc=9">HỌC PHÍ</a></li>
-
-				<!-- 
-				 <li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle"
-					href="baivietController?action=getListbaiviet&iddanhmuc=9"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						HỌC PHÍ </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Action</a></li>
-
-					</ul></li>
-				 -->
-
+					href="baivietController?action=getListbaiviet2&iddanhmuc=5">TRƯỜNG</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="baivietController?action=getListbaiviet2&iddanhmuc=6">KHOA</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="baivietController?action=getListbaiviet2&iddanhmuc=6">TRỢ GIÚP</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="baivietController?action=getListbaiviet2&iddanhmuc=7">NGHIÊN CỨU</a>
+				</li>
 			</ul>
 		</div>
 	</div>
-
 </nav>
+			<form class="d-flex justify-content-end align-items-center m-2">
+      
+  <div class="col-auto ">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  </div>
+  <div class="col-auto ">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </div>
+      </form>
+
+<div class="card mb-3">
+  <img src="image/banner.jpg" class="card-img-top" alt="">
+ 
+</div>

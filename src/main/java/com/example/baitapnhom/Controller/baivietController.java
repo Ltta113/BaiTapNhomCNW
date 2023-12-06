@@ -34,6 +34,14 @@ public class baivietController extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
+        if(action.equals("getListbaiviet2"))
+        {
+            try {
+                getListbaiviet2(request, response);
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
         if(action.equals("getPagetbv"))
         {
             try {
@@ -83,6 +91,14 @@ public class baivietController extends HttpServlet {
             }
         }
       
+        if(action.equals("thongtinbaivietFE"))
+        {
+            try {
+                thongtinbaivietFE(request, response);;
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
         if(action.equals("duyetbaiviet"))
         {
             try {
@@ -122,6 +138,20 @@ public class baivietController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
             rd.forward(request, response);
         }
+    }
+    public void getListbaiviet2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+
+        int iddanhmuc = Integer.parseInt(request.getParameter("iddanhmuc"));
+        	 ArrayList<baivietModel> ListBaiViet = null;
+        	if(request.getParameter("iddanhmuc")!=null) {
+             ListBaiViet = baivietBo.getlistbaivietBydanhmucBO(iddanhmuc);
+            }
+        	else
+        	 ListBaiViet = baivietBo.getlistbaivietBO();
+            request.setAttribute("ListBaiViet", ListBaiViet);
+            RequestDispatcher rd = request.getRequestDispatcher("ViewBaiViet.jsp");
+            rd.forward(request, response);
+        
     }
     public void getPagetbv(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         session = request.getSession();
@@ -202,6 +232,13 @@ public class baivietController extends HttpServlet {
             rd.forward(request, response);
     }
   
+    public void thongtinbaivietFE(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        int idbaiviet = Integer.parseInt(request.getParameter("idbaiviet"));
+        baivietModel BaiViet = baivietBo.getbaivietbyidBO(idbaiviet);
+        request.setAttribute("BaiViet", BaiViet);
+        RequestDispatcher rd = request.getRequestDispatcher("ViewDetailBaiViet.jsp");
+        rd.forward(request, response);
+}
     public void duyetbaiviet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         int quyen = (int) session.getAttribute("quyen");
         int idtaikhoan = (int) session.getAttribute("idtaikhoan");
