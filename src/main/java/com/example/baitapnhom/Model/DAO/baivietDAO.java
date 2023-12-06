@@ -11,7 +11,7 @@ public class baivietDAO {
 
     public baivietDAO() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "01012003");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "");
     }
 
     public boolean create(baivietModel baiviet) {
@@ -59,6 +59,26 @@ public class baivietDAO {
                 "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
                 "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
                 " WHERE bv.idtaikhoan = ?";
+        try (PreparedStatement statement = cnn.prepareStatement(query)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                baivietModel baiviet = extractBaivietFromResultSet(resultSet);
+                baiviets.add(baiviet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return baiviets;
+    }
+    public ArrayList<baivietModel> getbaivietbyIddanhmucDAO(int id) {
+        ArrayList<baivietModel> baiviets = new ArrayList<>();
+        String query = "SELECT * \n" +
+                "FROM baiviet bv\n" +
+                "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
+                "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
+                " WHERE bv.iddanhmuc = ?";
         try (PreparedStatement statement = cnn.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();

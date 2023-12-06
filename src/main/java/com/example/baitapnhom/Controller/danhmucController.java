@@ -85,6 +85,17 @@ public class danhmucController extends HttpServlet {
             rd.forward(request, response);
         }
     }
+//    public void getListDanhMucCha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+//            ArrayList<danhmucModel> ListDanhMuc = danhmucBo.getListdanhmucchaBO();
+//            request.setAttribute("ListDanhMuc", ListDanhMuc);
+//            RequestDispatcher rd = request.getRequestDispatcher("ListDanhMuc.jsp");
+//            rd.forward(request, response);
+//        }
+//        else {
+//            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
+//            rd.forward(request, response);
+//        }
+//    }
     public void getPagecndm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         session = request.getSession();
         int quyen = (int) session.getAttribute("quyen");

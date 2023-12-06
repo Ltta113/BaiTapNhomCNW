@@ -9,6 +9,7 @@
 --%>
 <!DOCTYPE html>
 <html lang="en">
+<%@include file="Component/MainCSS.jsp"%>
 
 <head>
     <meta charset="UTF-8"/>
@@ -38,6 +39,7 @@
 </head>
 
 <body>
+<%@include file="Navbar.jsp"%>
 
 <h2>Danh sách bài viết:</h2>
 <table>
@@ -63,7 +65,7 @@
         </td>
         <td><%= dm.getHoten() %>
         </td>
-        <td><a href='/BaiTapNhom_war_exploded/baivietController?action=thongtinbaiviet&idbaiviet=<%= dm.getIdbaiviet() %>'><%= dm.getTieude().substring(0, Math.min(dm.getTieude().length(), 20)) %></a>
+        <td><a href='baivietController?action=thongtinbaiviet&idbaiviet=<%= dm.getIdbaiviet() %>'><%= dm.getTieude().substring(0, Math.min(dm.getTieude().length(), 20)) %></a>
         </td>
         <td><img src="<%= dm.getAnh() %>" alt=""></td>
         <td><%= dm.getTendanhmuc() %>
@@ -81,7 +83,7 @@
         </td>
         <td>
             <% if (dm.getKiemduyet() == 0) { %>
-            <a href='/BaiTapNhom_war_exploded/baivietController?action=getPagecnbv&idbaiviet=<%= dm.getIdbaiviet() %>'>Thay đổi</a>
+            <a href='baivietController?action=getPagecnbv&idbaiviet=<%= dm.getIdbaiviet() %>'>Thay đổi</a>
         <% } else { %>
         Không thể thay đổi
         <% } %>
@@ -92,7 +94,7 @@
                 int quyen = (int) session1.getAttribute("quyen");
                 if (dm.getKiemduyet() == 1 && quyen == 1 || dm.getKiemduyet() == 0) {
             %>
-            <a href='/BaiTapNhom_war_exploded/baivietController?action=xoabaiviet&idbaiviet=<%= dm.getIdbaiviet() %>'>Xóa</a>
+            <a href='baivietController?action=xoabaiviet&idbaiviet=<%= dm.getIdbaiviet() %>'>Xóa</a>
             <%
             } else {
             %>
@@ -107,7 +109,7 @@
     %>
 </table>
 <br/>
-<button><a href="/BaiTapNhom_war_exploded/baivietController?action=getPagetbv">Thêm mới</a></button>
+<button><a href="baivietController?action=getPagetbv">Thêm mới</a></button>
 <p><a href="javascript:history.back()">Back</a></p>
 </body>
 </html>

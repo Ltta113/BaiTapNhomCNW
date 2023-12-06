@@ -70,14 +70,14 @@
         <td><%= i + 1 %></td>
         <td><%= dm.getTendanhmuc() %></td>
         <td><%= categoryName %></td>
-        <td><a href='/BaiTapNhom_war_exploded/danhmucController?action=getPagecndm&iddanhmuc=<%= dm.getIddanhmuc() %>'>Thay đổi</a></td>
+        <td><a href='danhmucController?action=getPagecndm&iddanhmuc=<%= dm.getIddanhmuc() %>'>Thay đổi</a></td>
     </tr>
     <%
         }
     %>
 </table>
 <br/>
-<button><a href="/BaiTapNhom_war_exploded/danhmucController?action=getPagetdm">Thêm mới</a></button>
+<button><a href="danhmucController?action=getPagetdm">Thêm mới</a></button>
 <p><a href="javascript:history.back()">Back</a></p>
 </body>
 </html>

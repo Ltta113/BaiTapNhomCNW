@@ -19,6 +19,10 @@ public class danhmucBO {
     {
         return danhmucDao.getListdanhmucDAO();
     }
+    public ArrayList<danhmucModel> getListdanhmucchaBO()
+    {
+        return danhmucDao.getListdanhmucchaDAO();
+    }
     public boolean themdanhmucBO(danhmucModel danhmuc) { return danhmucDao.themDanhMucDAO(danhmuc);}
     public boolean capNhatDanhMucBO(danhmucModel danhmuc) { return danhmucDao.capNhatDanhMucDAO(danhmuc);}
 }

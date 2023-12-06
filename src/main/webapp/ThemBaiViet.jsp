@@ -22,7 +22,7 @@
 
 <body>
 
-<form class="login-container" action="/BaiTapNhom_war_exploded/baivietController?action=thembaiviet" method="post">
+<form class="login-container" action="baivietController?action=thembaiviet" method="post">
     <%
         ArrayList<danhmucModel> ListDanhMuc = (ArrayList<danhmucModel>) request.getAttribute("ListDanhMuc");
     %>

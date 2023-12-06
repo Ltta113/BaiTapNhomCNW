@@ -48,7 +48,7 @@
 <br>
 <label>Ảnh:</label>
 <img src="<%=BaiViet.getAnh()%>" alt="">
-<button type="button"><a href='/BaiTapNhom_war_exploded/baivietController?action=duyetbaiviet&idbaiviet=<%= BaiViet.getIdbaiviet() %>'>Duyệt bài</a></button>
+<button type="button"><a href='baivietController?action=duyetbaiviet&idbaiviet=<%= BaiViet.getIdbaiviet() %>'>Duyệt bài</a></button>
 <p><a href="javascript:history.back()">Back</a></p>
 </body>
 

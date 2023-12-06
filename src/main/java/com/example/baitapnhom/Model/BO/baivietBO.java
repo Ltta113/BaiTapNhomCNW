@@ -23,6 +23,9 @@ public class baivietBO {
         return baivietDao.readById(id);
     }
 
+    public ArrayList<baivietModel> getlistbaivietBydanhmucBO(int id) {
+        return baivietDao.getbaivietbyIddanhmucDAO(id);
+    }
     public ArrayList<baivietModel> getlistbaivietBO() {
         return baivietDao.readAll();
     }
@@ -43,4 +46,6 @@ public class baivietBO {
     public ArrayList<baivietModel> getbaivietbyIdcanhanBO(int id) {
         return baivietDao.getbaivietbyIdcanhanDAO(id);
     }
+  
+
 }

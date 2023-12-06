@@ -21,7 +21,7 @@
 
 <body>
 
-<form class="login-container" action="/BaiTapNhom_war_exploded/taikhoanController?action=capnhatthongtin" method="post">
+<form class="login-container" action="taikhoanController?action=capnhatthongtin" method="post">
     <%
         taikhoanModel taikhoan = (taikhoanModel) request.getAttribute("taikhoan");
     %>

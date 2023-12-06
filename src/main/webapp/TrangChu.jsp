@@ -11,6 +11,6 @@
     <title>Trang chủ</title>
 </head>
 <body>
-<a href="/BaiTapNhom_war_exploded/taikhoanController?action=getPagecntk">Cập nhật tai khoản</a>
+<a href="taikhoanController?action=getPagecntk">Cập nhật tai khoản</a>
 </body>
 </html>

@@ -82,7 +82,7 @@ public class taikhoanController extends HttpServlet {
             session.setAttribute("username", taikhoan.getUsername());
             session.setAttribute("quyen", taikhoan.getQuyen());
             session.setAttribute("idtaikhoan", taikhoan.getIdtaikhoan());
-            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("Navbar.jsp");
             rd.forward(request, response);
         }
     }

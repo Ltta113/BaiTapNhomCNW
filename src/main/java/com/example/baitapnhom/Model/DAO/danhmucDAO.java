@@ -10,7 +10,7 @@ public class danhmucDAO {
 
     public danhmucDAO() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "01012003");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "");
     }
 
     public boolean themDanhMucDAO(danhmucModel danhMuc) {
@@ -55,6 +55,27 @@ public class danhmucDAO {
         danhmucModel danhMuc = null;
         if (cnn != null) {
             try (PreparedStatement stm = cnn.prepareStatement("SELECT * FROM danhmuc ")) {
+                try (ResultSet rs = stm.executeQuery()) {
+                    while (rs.next()) {
+                        danhMuc = new danhmucModel();
+                        danhMuc.setIddanhmuc(rs.getInt("iddanhmuc"));
+                        danhMuc.setTendanhmuc(rs.getString("tendanhmuc"));
+                        danhMuc.setIddm2(rs.getInt("iddm2"));
+                        result.add(danhMuc);
+                    }
+                    return result;
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return result;
+    }
+    public ArrayList<danhmucModel> getListdanhmucchaDAO() {
+        ArrayList<danhmucModel> result = new ArrayList<>();
+        danhmucModel danhMuc = null;
+        if (cnn != null) {
+            try (PreparedStatement stm = cnn.prepareStatement("SELECT * FROM danhmuc where iddm2 = 0")) {
                 try (ResultSet rs = stm.executeQuery()) {
                     while (rs.next()) {
                         danhMuc = new danhmucModel();

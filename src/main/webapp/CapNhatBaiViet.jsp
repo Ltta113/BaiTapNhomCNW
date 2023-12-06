@@ -37,7 +37,7 @@
 
 <body>
 
-<form class="login-container" action="/BaiTapNhom_war_exploded/baivietController?action=capnhatbaiviet" method="post">
+<form class="login-container" action="baivietController?action=capnhatbaiviet" method="post">
 
     <input type="hidden" id="idbaiviet" name="idbaiviet" value="<%=BaiViet.getIdbaiviet()%>" required>
     <h1>Thêm bài viết</h1>

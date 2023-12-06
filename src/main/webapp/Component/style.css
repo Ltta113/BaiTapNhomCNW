@@ -1,0 +1,22 @@
+h1{
+	color:blue;
+}
+
+.navbar{
+	background-color: #e3f2fd;
+}
+.navbar .navbar-nav .nav-link:hover {
+  background-color: #01579b;
+ 
+   border-radius: 10px;
+   color: #ffffff;
+ 
+}
+.navbar .navbar-nav .nav-link {
+  font-size: 13px;
+  font-weight: bold;
+}
+.navbar-nav > li {
+  
+  margin-right: 8px;
+}

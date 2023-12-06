@@ -22,7 +22,7 @@
 
 <body>
 
-<form class="login-container" action="/BaiTapNhom_war_exploded/danhmucController?action=capnhatdanhmuc" method="post">
+<form class="login-container" action="danhmucController?action=capnhatdanhmuc" method="post">
     <%
         danhmucModel DanhMuc = (danhmucModel) request.getAttribute("DanhMuc");
         ArrayList<danhmucModel> ListDanhMuc = (ArrayList<danhmucModel>) request.getAttribute("ListDanhMuc");
