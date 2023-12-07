@@ -1,9 +1,9 @@
 package com.example.baitapnhom.Controller;
 
 import com.example.baitapnhom.Model.BO.danhmucBO;
-import com.example.baitapnhom.Model.BO.taikhoanBO;
+import com.example.baitapnhom.Model.Bean.baivietModel;
 import com.example.baitapnhom.Model.Bean.danhmucModel;
-import com.example.baitapnhom.Model.Bean.taikhoanModel;
+import com.google.gson.Gson;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,11 +25,21 @@ public class danhmucController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws IOException, ServletException {
+        session = request.getSession();
+        session.setAttribute("danhMuc", danhmucBo.getListdanhmucBO());
         String action = request.getParameter("action");
         if(action.equals("getListdanhmuc"))
         {
             try {
                 getListdanhmuc(request, response);
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if(action.equals("getListdanhmuc2"))
+        {
+            try {
+                getListdanhmuc2(request, response);
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -66,6 +76,14 @@ public class danhmucController extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
+        if(action.equals("timkiemdanhmuc"))
+        {
+            try {
+                timkiemdanhmuc(request, response);
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws IOException, ServletException {
@@ -73,17 +91,30 @@ public class danhmucController extends HttpServlet {
     }
     public void getListdanhmuc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         session = request.getSession();
-        int quyen = (int) session.getAttribute("quyen");
-        if(quyen == 1) {
-            ArrayList<danhmucModel> ListDanhMuc = danhmucBo.getListdanhmucBO();
-            request.setAttribute("ListDanhMuc", ListDanhMuc);
-            RequestDispatcher rd = request.getRequestDispatcher("ListDanhMuc.jsp");
-            rd.forward(request, response);
+        if(session.getAttribute("idtaikhoan") != null) {
+            int quyen = (int) session.getAttribute("quyen");
+            if (quyen == 1) {
+                ArrayList<danhmucModel> ListDanhMuc = danhmucBo.getListdanhmucBO();
+                request.setAttribute("ListDanhMuc", ListDanhMuc);
+                RequestDispatcher rd = request.getRequestDispatcher("ListDanhMuc.jsp");
+                rd.forward(request, response);
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
+                rd.forward(request, response);
+            }
         }
-        else {
-            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
-            rd.forward(request, response);
-        }
+        RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
+        rd.forward(request, response);
+    }
+    public void getListdanhmuc2(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        ArrayList<danhmucModel> ListDanhMuc = danhmucBo.getListdanhmucBO();
+        Gson gson = new Gson();
+        // Convert the danh muc list to JSON
+        String json = gson.toJson(ListDanhMuc);
+        // Set the response content type to application/json
+        response.setContentType("application/json");
+        // Write the JSON data to the response
+        response.getWriter().write(json);
     }
 //    public void getListDanhMucCha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
 //            ArrayList<danhmucModel> ListDanhMuc = danhmucBo.getListdanhmucchaBO();
@@ -141,5 +172,12 @@ public class danhmucController extends HttpServlet {
         DanhMuc.setTendanhmuc(request.getParameter("tendanhmuc"));
         danhmucBo.themdanhmucBO(DanhMuc);
         getListdanhmuc(request, response);
+    }
+    public void timkiemdanhmuc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        String data = request.getParameter("Search");
+        ArrayList<danhmucModel> ListDanhMuc = danhmucBo.timkiemdanhmucBO(data);
+        request.setAttribute("ListDanhMuc", ListDanhMuc);
+        RequestDispatcher rd = request.getRequestDispatcher("ListDanhMuc.jsp");
+        rd.forward(request, response);
     }
 }

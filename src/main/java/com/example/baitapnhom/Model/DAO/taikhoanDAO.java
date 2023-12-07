@@ -8,7 +8,7 @@ public class taikhoanDAO {
     private final Connection cnn;
     public taikhoanDAO() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "01012003");
     }
     public boolean dangkiDAO(taikhoanModel taikhoan) {
         boolean success = false; // Initialize the success flag as false

@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LENOVO
-  Date: 12/1/2023
-  Time: 3:08 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Trang chủ</title>
+
 </head>
 <body>
-<a href="taikhoanController?action=getPagecntk">Cập nhật tai khoản</a>
+<button onclick="getListDanhMucCha()">Lấy danh mục cha</button>
+
+<ul id="danhMucList"></ul>
 </body>
 </html>

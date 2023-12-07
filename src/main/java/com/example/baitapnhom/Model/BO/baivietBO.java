@@ -22,14 +22,21 @@ public class baivietBO {
     public baivietModel getbaivietbyidBO(int id) {
         return baivietDao.readById(id);
     }
-
+    public ArrayList<baivietModel> findBaiVietBO(String data) {
+        return baivietDao.findBaiViet(data);
+    }
     public ArrayList<baivietModel> getlistbaivietBydanhmucBO(int id) {
         return baivietDao.getbaivietbyIddanhmucDAO(id);
+    }
+    public ArrayList<baivietModel> getlistbaivietBydanhmucBOFE(int id) {
+        return baivietDao.getbaivietbyIddanhmucDAOFE(id);
     }
     public ArrayList<baivietModel> getlistbaivietBO() {
         return baivietDao.readAll();
     }
-
+    public ArrayList<baivietModel> getlistbaivietBOFE() {
+        return baivietDao.readAllFE();
+    }
     public boolean capnhatbaivietBO(baivietModel baiviet) {
         return baivietDao.update(baiviet);
     }

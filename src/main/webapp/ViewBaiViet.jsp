@@ -38,8 +38,7 @@
 							<img src="assets/images/avatars/thumb-3.jpg" alt="">
 						</div>
 						<div class="m-l-10">
-							<span class="text-gray font-weight-semibold"><%= dm.getHoten() %></span> <span class="m-h-5 text-gray">|</span> <span
-								class="text-gray"><%= dm.getNgayviet() %></span>
+							<span class="text-gray"><%= dm.getNgayviet() %></span>
 						</div>
 					</div>
 					<p class="m-b-20"><%= dm.getNoidung().substring(0, Math.min(dm.getNoidung().length(), 100)) %></p>

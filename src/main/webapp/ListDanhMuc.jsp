@@ -28,18 +28,59 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: cornflowerblue;
         }
 
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
+        .truncate {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: dodgerblue;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
 <body>
+<%@include file="NavbarAdmin.jsp"%>
+<div class="button-container">
+    <h2>Danh sách danh mục:</h2>
+    <button class="add-button"><a href="/danhmucController?action=getPagetdm" style="text-decoration: none; color: black;">Thêm mới</a></button>
+</div>
+<div>
+    <form class="d-flex justify-content-end align-items-center m-2" action="/danhmucController?action=timkiemdanhmuc" method="post">
 
-<h2>Danh sách danh mục:</h2>
+        <div class="col-auto ">
+            <input class="form-control me-2" type="search" placeholder="Nhập thông tin..." name="Search" id="Search" aria-label="Search">
+        </div>
+        <div class="col-auto ">
+            <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+        </div>
+    </form>
+</div>
+
 <table>
     <tr>
         <th>STT</th>
@@ -70,14 +111,12 @@
         <td><%= i + 1 %></td>
         <td><%= dm.getTendanhmuc() %></td>
         <td><%= categoryName %></td>
-        <td><a href='danhmucController?action=getPagecndm&iddanhmuc=<%= dm.getIddanhmuc() %>'>Thay đổi</a></td>
+        <td><a href='/danhmucController?action=getPagecndm&iddanhmuc=<%= dm.getIddanhmuc() %>'>Thay đổi</a></td>
     </tr>
     <%
         }
     %>
 </table>
 <br/>
-<button><a href="danhmucController?action=getPagetdm">Thêm mới</a></button>
-<p><a href="javascript:history.back()">Back</a></p>
 </body>
 </html>

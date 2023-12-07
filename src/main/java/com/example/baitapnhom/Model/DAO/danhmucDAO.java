@@ -1,5 +1,6 @@
 package com.example.baitapnhom.Model.DAO;
 
+import com.example.baitapnhom.Model.Bean.baivietModel;
 import com.example.baitapnhom.Model.Bean.danhmucModel;
 
 import java.sql.*;
@@ -10,7 +11,7 @@ public class danhmucDAO {
 
     public danhmucDAO() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "01012003");
     }
 
     public boolean themDanhMucDAO(danhmucModel danhMuc) {
@@ -108,5 +109,25 @@ public class danhmucDAO {
             }
         }
         return success;
+    }
+    public ArrayList<danhmucModel> timkiemdanhmucDAO(String data) {
+        ArrayList<danhmucModel> result = new ArrayList<>();
+        danhmucModel danhMuc = null;
+        String query = "SELECT * FROM danhmuc where tendanhmuc LIKE ?";
+        try (PreparedStatement statement = cnn.prepareStatement(query)) {
+            statement.setString(1, "%" + data + "%");
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                danhMuc = new danhmucModel();
+                danhMuc.setIddanhmuc(rs.getInt("iddanhmuc"));
+                danhMuc.setTendanhmuc(rs.getString("tendanhmuc"));
+                danhMuc.setIddm2(rs.getInt("iddm2"));
+                result.add(danhMuc);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

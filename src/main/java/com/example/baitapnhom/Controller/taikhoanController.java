@@ -32,14 +32,6 @@ public class taikhoanController extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
-        if(action.equals("dangky"))
-        {
-            try {
-                dangky(request, response);
-            } catch (SQLException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        }
         if(action.equals("getPagecntk"))
         {
             try {
@@ -59,7 +51,7 @@ public class taikhoanController extends HttpServlet {
         if(action.equals("dangxuat"))
         {
             try {
-                capnhatthongtin(request, response);
+                dangxuat(request, response);
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -82,25 +74,7 @@ public class taikhoanController extends HttpServlet {
             session.setAttribute("username", taikhoan.getUsername());
             session.setAttribute("quyen", taikhoan.getQuyen());
             session.setAttribute("idtaikhoan", taikhoan.getIdtaikhoan());
-            RequestDispatcher rd = request.getRequestDispatcher("Navbar.jsp");
-            rd.forward(request, response);
-        }
-    }
-    public void dangky(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        taikhoanModel taikhoan = new taikhoanModel();
-        taikhoan.setUsername(request.getParameter("username"));
-        taikhoan.setPassword(request.getParameter("password"));
-        taikhoan.setHoten(request.getParameter("hoten"));
-        taikhoan.setQuyen(0);
-        taikhoan.setNgaysinh(Date.valueOf(request.getParameter("ngaysinh")));
-
-        boolean check = taikhoanBo.dangkiBO(taikhoan);
-        if(check){
             RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
-            rd.forward(request, response);
-        }
-        else {
-            RequestDispatcher rd = request.getRequestDispatcher("DangKy.jsp");
             rd.forward(request, response);
         }
     }
@@ -109,43 +83,53 @@ public class taikhoanController extends HttpServlet {
         session.setAttribute("username", "");
         session.setAttribute("quyen", "");
         session.setAttribute("idtaikhoan", "");
+        RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
+        rd.forward(request, response);
     }
     public void getPagecntk(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        int idtaikhoan = (int) session.getAttribute("idtaikhoan");
+        session = request.getSession();
+        if(session.getAttribute("idtaikhoan") != null) {
+            int idtaikhoan = (int) session.getAttribute("idtaikhoan");
 
-        taikhoanModel taikhoan = taikhoanBo.gettaikhoanbyidBO(idtaikhoan);
-        if(taikhoan == null) {
-            RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
-            rd.forward(request, response);
+            taikhoanModel taikhoan = taikhoanBo.gettaikhoanbyidBO(idtaikhoan);
+            if (taikhoan == null) {
+                RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
+                rd.forward(request, response);
+            } else {
+                request.setAttribute("taikhoan", taikhoan);
+                RequestDispatcher rd = request.getRequestDispatcher("CapNhatThongTin.jsp");
+                rd.forward(request, response);
+            }
         }
-        else {
-            request.setAttribute("taikhoan", taikhoan);
-            RequestDispatcher rd = request.getRequestDispatcher("CapNhatThongTin.jsp");
-            rd.forward(request, response);
-        }
+        RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
+        rd.forward(request, response);
     }
     public void capnhatthongtin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-        taikhoanModel taikhoan = new taikhoanModel();
-        taikhoan.setIdtaikhoan((int) session.getAttribute("idtaikhoan"));
-        System.out.println((int) session.getAttribute("idtaikhoan"));
-        System.out.println((String) session.getAttribute("username"));
-        System.out.println((int) session.getAttribute("quyen"));
-        System.out.println(request.getParameter("password"));
-        System.out.println(request.getParameter("hoten"));
-        System.out.println(request.getParameter("ngaysinh"));
-        taikhoan.setUsername((String) session.getAttribute("username"));
-        taikhoan.setPassword(request.getParameter("password"));
-        taikhoan.setHoten(request.getParameter("hoten"));
-        taikhoan.setQuyen((int) session.getAttribute("quyen"));
-        taikhoan.setNgaysinh(Date.valueOf(request.getParameter("ngaysinh")));
+        session = request.getSession();
+        if(session.getAttribute("idtaikhoan") != null) {
+            taikhoanModel taikhoan = new taikhoanModel();
+            taikhoan.setIdtaikhoan((int) session.getAttribute("idtaikhoan"));
+            System.out.println((int) session.getAttribute("idtaikhoan"));
+            System.out.println((String) session.getAttribute("username"));
+            System.out.println((int) session.getAttribute("quyen"));
+            System.out.println(request.getParameter("password"));
+            System.out.println(request.getParameter("hoten"));
+            System.out.println(request.getParameter("ngaysinh"));
+            taikhoan.setUsername((String) session.getAttribute("username"));
+            taikhoan.setPassword(request.getParameter("password"));
+            taikhoan.setHoten(request.getParameter("hoten"));
+            taikhoan.setQuyen((int) session.getAttribute("quyen"));
+            taikhoan.setNgaysinh(Date.valueOf(request.getParameter("ngaysinh")));
 
-        boolean check = taikhoanBo.capnhatthongtinBO(taikhoan);
-        if(check){
-            RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
-            rd.forward(request, response);
+            boolean check = taikhoanBo.capnhatthongtinBO(taikhoan);
+            if (check) {
+                RequestDispatcher rd = request.getRequestDispatcher("TrangChuAdmin.jsp");
+                rd.forward(request, response);
+            } else {
+                getPagecntk(request, response);
+            }
         }
-        else {
-            getPagecntk(request, response);
-        }
+        RequestDispatcher rd = request.getRequestDispatcher("DangNhap.jsp");
+        rd.forward(request, response);
     }
 }

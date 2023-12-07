@@ -1,5 +1,10 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@include file="MainCSS.jsp"%>
+<style>
+	a {
+		text-decoration: none;
+	}
+</style>
 
 <!-- Footer -->
 <footer class="text-center text-lg-start text-white"
@@ -75,13 +80,13 @@
 				<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
 					<h6 class="text-uppercase mb-4 font-weight-bold">Kết nối</h6>
 					<p>
-						<i class="fa-brands fa-facebook"></i> Facebook
+						<a href="https://www.facebook.com/watch/bachkhoaDUT/"><i class="fa-brands fa-facebook"></i> Facebook</a>
 					</p>
 					<p>
-						<i class="fa-brands fa-youtube"></i> Youtube
+						<a href="https://www.youtube.com/channel/UCDEvOrrx6-cJfcMQGOHHysg"><i class="fa-brands fa-youtube"></i> Youtube</a>
 					</p>
 					<p>
-						<i class="fa-brands fa-twitter"></i> Twitter
+						<a href="https://twitter.com/i/flow/login?redirect_after_login=%2FBachkhoa_Danang"><i class="fa-brands fa-twitter"></i> Twitter</a>
 					</p>
 					
 				</div>

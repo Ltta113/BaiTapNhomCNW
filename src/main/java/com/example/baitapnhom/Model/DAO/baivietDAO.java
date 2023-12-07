@@ -11,7 +11,7 @@ public class baivietDAO {
 
     public baivietDAO() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "01012003");
     }
 
     public boolean create(baivietModel baiviet) {
@@ -39,7 +39,7 @@ public class baivietDAO {
                 "FROM baiviet bv\n" +
                 "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
                 "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
-                " WHERE idbaiviet = ?";
+                " WHERE idbaiviet = ? ORDER BY ngayviet DESC ";
         try (PreparedStatement statement = cnn.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -52,13 +52,33 @@ public class baivietDAO {
         }
         return null;
     }
+    public ArrayList<baivietModel> findBaiViet(String data) {
+        ArrayList<baivietModel> baiviets = new ArrayList<>();
+        String query = "SELECT * \n" +
+                "FROM baiviet bv\n" +
+                "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
+                "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
+                " WHERE bv.tieude LIKE ? ORDER BY bv.ngayviet DESC";
+        try (PreparedStatement statement = cnn.prepareStatement(query)) {
+            statement.setString(1, "%" + data + "%");
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                baivietModel baiviet = extractBaivietFromResultSet(resultSet);
+                baiviets.add(baiviet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return baiviets;
+    }
     public ArrayList<baivietModel> getbaivietbyIdcanhanDAO(int id) {
         ArrayList<baivietModel> baiviets = new ArrayList<>();
         String query = "SELECT * \n" +
                 "FROM baiviet bv\n" +
                 "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
                 "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
-                " WHERE bv.idtaikhoan = ?";
+                " WHERE bv.idtaikhoan = ? ORDER BY ngayviet DESC";
         try (PreparedStatement statement = cnn.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -78,7 +98,27 @@ public class baivietDAO {
                 "FROM baiviet bv\n" +
                 "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
                 "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
-                " WHERE bv.iddanhmuc = ?";
+                " WHERE bv.iddanhmuc = ? ORDER BY ngayviet DESC";
+        try (PreparedStatement statement = cnn.prepareStatement(query)) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                baivietModel baiviet = extractBaivietFromResultSet(resultSet);
+                baiviets.add(baiviet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return baiviets;
+    }
+    public ArrayList<baivietModel> getbaivietbyIddanhmucDAOFE(int id) {
+        ArrayList<baivietModel> baiviets = new ArrayList<>();
+        String query = "SELECT * \n" +
+                "FROM baiviet bv\n" +
+                "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
+                "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan" +
+                " WHERE bv.iddanhmuc = ? AND bv.kiemduyet = 1 ORDER BY ngayviet DESC";
         try (PreparedStatement statement = cnn.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -97,7 +137,7 @@ public class baivietDAO {
         String query = "SELECT * \n" +
                 "FROM baiviet bv\n" +
                 "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
-                "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan";
+                "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan ORDER BY bv.ngayviet DESC";
         try (Statement statement = cnn.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
 
@@ -110,7 +150,24 @@ public class baivietDAO {
         }
         return baiviets;
     }
+    public ArrayList<baivietModel> readAllFE() {
+        ArrayList<baivietModel> baiviets = new ArrayList<>();
+        String query = "SELECT * \n" +
+                "FROM baiviet bv\n" +
+                "join danhmuc dm on bv.iddanhmuc = dm.iddanhmuc\n" +
+                "join taikhoan tk on bv.idtaikhoan = tk.idtaikhoan AND bv.kiemduyet = 1 ORDER BY bv.ngayviet DESC";
+        try (Statement statement = cnn.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
 
+            while (resultSet.next()) {
+                baivietModel baiviet = extractBaivietFromResultSet(resultSet);
+                baiviets.add(baiviet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return baiviets;
+    }
     public boolean update(baivietModel baiviet) {
         String query = "UPDATE baiviet SET iddanhmuc = ?, tieude = ?, noidung = ?, idtaikhoan = ?, " +
                 "ngayviet = ?, anh = ?, kiemduyet = ? WHERE idbaiviet = ?";
