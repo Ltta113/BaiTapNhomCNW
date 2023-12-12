@@ -60,7 +60,7 @@
 
 	function getDanhMucData() {
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "/danhmucController?action=getListdanhmuc2", true);
+		xhr.open("GET", "danhmucController?action=getListdanhmuc2", true);
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 				danhMucList = JSON.parse(xhr.responseText);

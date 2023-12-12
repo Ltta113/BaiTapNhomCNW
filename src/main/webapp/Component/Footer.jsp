@@ -60,16 +60,16 @@
 					<h6 class="text-uppercase mb-4 font-weight-bold">Các liên kết khác
 					</h6>
 					<p>
-						<a class="text-white" style="text-decoration: none">Thư viện</a>
+						<a class="text-white" style="text-decoration: none" href="http://lib.dut.udn.vn/primo-explore/search?vid=dut">Thư viện</a>
 					</p>
 					<p>
-						<a class="text-white" style="text-decoration: none">E-Learning</a>
+						<a class="text-white" style="text-decoration: none" href="http://lms.dut.udn.vn/">E-Learning</a>
 					</p>
 					<p>
-						<a class="text-white" style="text-decoration: none">Email</a>
+						<a class="text-white" style="text-decoration: none" href="http://sv.dut.udn.vn/">Hệ thống sinh viên </a>
 					</p>
 					<p>
-						<a class="text-white" style="text-decoration: none">Hệ thống tác nghiệp</a>
+						<a class="text-white" style="text-decoration: none" href="http://cb.dut.udn.vn/">Hệ thống tác nghiệp</a>
 					</p>
 				</div>
 

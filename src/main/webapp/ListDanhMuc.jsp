@@ -67,7 +67,7 @@
 <%@include file="NavbarAdmin.jsp"%>
 <div class="button-container">
     <h2>Danh sách danh mục:</h2>
-    <button class="add-button"><a href="/danhmucController?action=getPagetdm" style="text-decoration: none; color: black;">Thêm mới</a></button>
+    <button class="add-button"><a href="danhmucController?action=getPagetdm" style="text-decoration: none; color: black;">Thêm mới</a></button>
 </div>
 <div>
     <form class="d-flex justify-content-end align-items-center m-2" action="/danhmucController?action=timkiemdanhmuc" method="post">
@@ -111,7 +111,7 @@
         <td><%= i + 1 %></td>
         <td><%= dm.getTendanhmuc() %></td>
         <td><%= categoryName %></td>
-        <td><a href='/danhmucController?action=getPagecndm&iddanhmuc=<%= dm.getIddanhmuc() %>'>Thay đổi</a></td>
+        <td><a href='danhmucController?action=getPagecndm&iddanhmuc=<%= dm.getIddanhmuc() %>'>Thay đổi</a></td>
     </tr>
     <%
         }

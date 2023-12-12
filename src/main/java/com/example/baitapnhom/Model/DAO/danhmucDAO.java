@@ -11,7 +11,7 @@ public class danhmucDAO {
 
     public danhmucDAO() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "01012003");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/btncnw", "root", "");
     }
 
     public boolean themDanhMucDAO(danhmucModel danhMuc) {

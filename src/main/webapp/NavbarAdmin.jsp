@@ -13,16 +13,16 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link"
-                                        href="/danhmucController?action=getListdanhmuc">DANH SÁCH DANH MỤC</a>
+                                        href="danhmucController?action=getListdanhmuc">DANH SÁCH DANH MỤC</a>
                 </li>
                 <li class="nav-item"><a class="nav-link"
-                                        href="/baivietController?action=getListbaiviet">DANH SÁCH BÀI VIẾT CỦA BẠN</a>
+                                        href="baivietController?action=getListbaiviet">DANH SÁCH BÀI VIẾT CỦA BẠN</a>
                 </li>
                 <li class="nav-item"><a class="nav-link"
-                                        href="/taikhoanController?action=getPagecntk">CẬP NHẬT THÔNG TIN CÁ NHÂN</a>
+                                        href="taikhoanController?action=getPagecntk">CẬP NHẬT THÔNG TIN CÁ NHÂN</a>
                 </li>
                 <li class="nav-item"><a class="nav-link"
-                                        href="/taikhoanController?action=dangxuat">ĐĂNG XUẤT</a>
+                                        href="taikhoanController?action=dangxuat">ĐĂNG XUẤT</a>
                 </li>
             </ul>
         </div>
