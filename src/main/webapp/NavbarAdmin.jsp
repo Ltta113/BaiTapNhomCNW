@@ -24,6 +24,9 @@
                 <li class="nav-item"><a class="nav-link"
                                         href="taikhoanController?action=dangxuat">ĐĂNG XUẤT</a>
                 </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="MainPage.jsp">ĐẾN TRANG CHÍNH THỨC</a>
+                </li>
             </ul>
         </div>
         <div class="name"> </div>
