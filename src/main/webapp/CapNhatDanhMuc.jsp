@@ -70,7 +70,7 @@
 
 <body>
 <%@include file="NavbarAdmin.jsp"%>
-<form class="login-container" action="/danhmucController?action=capnhatdanhmuc" method="post">
+<form class="login-container" action="danhmucController?action=capnhatdanhmuc" method="post">
     <%
         danhmucModel DanhMuc = (danhmucModel) request.getAttribute("DanhMuc");
         ArrayList<danhmucModel> ListDanhMuc = (ArrayList<danhmucModel>) request.getAttribute("ListDanhMuc");

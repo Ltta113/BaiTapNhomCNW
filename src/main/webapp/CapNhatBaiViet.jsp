@@ -76,7 +76,7 @@ a {
 
 <body>
 	<%@include file="NavbarAdmin.jsp"%>
-	<form class="row g-3 m-3">
+	<form class="row g-3 m-3" action="baivietController?action=capnhatbaiviet" method="post">
 		<input type="hidden" id="idbaiviet" name="idbaiviet"
 			value="<%=BaiViet.getIdbaiviet()%>" required>
 		<h1>Cập nhật bài viết</h1>

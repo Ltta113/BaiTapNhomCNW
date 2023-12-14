@@ -69,7 +69,7 @@
 <body>
 <%@include file="NavbarAdmin.jsp"%>
 
-<form class="login-container" action="/taikhoanController?action=capnhatthongtin" method="post">
+<form class="login-container" action="taikhoanController?action=capnhatthongtin" method="post">
     <% taikhoanModel taikhoan = (taikhoanModel) request.getAttribute("taikhoan"); %>
     <h1>Cập nhật thông tin</h1>
     <label for="password">Mật khẩu:</label>

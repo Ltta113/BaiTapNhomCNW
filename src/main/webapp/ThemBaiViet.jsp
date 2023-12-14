@@ -63,7 +63,7 @@
 </head>
 <body>
 <%@include file="NavbarAdmin.jsp"%>
-<form class="" action="/baivietController?action=thembaiviet" method="post">
+<form class="" action="baivietController?action=thembaiviet" method="post">
     <% ArrayList<danhmucModel> ListDanhMuc = (ArrayList<danhmucModel>) request.getAttribute("ListDanhMuc"); %>
     <h1>Thêm bài viết</h1>
     <div >

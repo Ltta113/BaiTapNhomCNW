@@ -70,7 +70,7 @@
     <button class="add-button"><a href="baivietController?action=getPagetbv" style="text-decoration: none; color: black;">Thêm mới</a></button>
 </div>
 <div>
-    <form class="d-flex justify-content-end align-items-center m-2" action="/baivietController?action=timkiembaiviet2" method="post">
+    <form class="d-flex justify-content-end align-items-center m-2" action="baivietController?action=timkiembaiviet2" method="post">
 
         <div class="col-auto ">
             <input class="form-control me-2" type="search" placeholder="Nhập thông tin..." name="Search" id="Search" aria-label="Search">

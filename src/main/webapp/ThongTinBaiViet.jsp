@@ -34,14 +34,14 @@
                      style="height: 400px; display: block; margin-left: auto; margin-right: auto;"
                      src="<%=BaiViet.getAnh()%>">
                 <div class="m-t-30">
-                    <%=BaiViet.getNoidung()%>">
+                    <%=BaiViet.getNoidung()%>
                 </div>
                 <%
                     HttpSession session1 = request.getSession();
                     int quyen = (int) session1.getAttribute("quyen");
                     if (quyen == 1 && BaiViet.getKiemduyet() == 0) {
                 %>
-                <button type="button"><a href='/baivietController?action=duyetbaiviet&idbaiviet=<%= BaiViet.getIdbaiviet() %>'>Duyệt bài</a></button>
+                <button type="button"><a href='baivietController?action=duyetbaiviet&idbaiviet=<%= BaiViet.getIdbaiviet() %>'>Duyệt bài</a></button>
                 <%
                     }
                 %>
